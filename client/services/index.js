@@ -4,6 +4,7 @@ import axios from "axios";
 export async function getAllPeople() {
   try {
     const { data } = await axios.get(`/`);
+    console.log("🚀 ~ getAllPeople ~ data:", data);
     return data;
   } catch (error) {
     return error;

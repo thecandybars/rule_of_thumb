@@ -22,6 +22,8 @@ server.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
   next();
 });
+// Static media route
+server.use("/media", express.static("media"));
 
 server.use("/", routes);
 
