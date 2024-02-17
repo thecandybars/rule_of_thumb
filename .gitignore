@@ -1,0 +1,3 @@
+client/.env.local
+client/node_modules/
+api/node_modules/
