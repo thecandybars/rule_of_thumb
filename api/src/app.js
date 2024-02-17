@@ -24,7 +24,7 @@ server.use((req, res, next) => {
 });
 // Static media route
 server.use("/media", express.static("media"));
-
+// API routes
 server.use("/", routes);
 
 // Error catching endware.
