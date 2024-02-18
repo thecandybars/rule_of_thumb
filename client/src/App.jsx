@@ -1,7 +1,4 @@
-import { useEffect, useState } from "react";
-import { Box, Typography } from "@mui/material";
 import "./App.css";
-import { getAllPeople } from "../services";
 import Nav from "./components/nav/Nav";
 import Header from "./components/header/Header";
 import AsideTop from "./components/asides/AsideTop";

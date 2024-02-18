@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { getAllPeople } from "../../../services";
+import Card from "./components/Card";
 
 export default function Main() {
-  const [fetchedPeople, setFetchedPeople] = useState(null);
-  const mediaPath = import.meta.env.VITE_MEDIA_PATH;
+  const [fetchedPeople, setFetchedPeople] = useState([]);
 
   console.log("🚀 ~ App ~ fetchedPeople:", fetchedPeople);
   useEffect(() => {
@@ -13,5 +13,9 @@ export default function Main() {
     };
     fetch();
   }, []);
-  return <div>Main</div>;
+  return (
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <Card data={fetchedPeople.length && fetchedPeople[5]} />
+    </div>
+  );
 }
