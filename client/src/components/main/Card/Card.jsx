@@ -12,6 +12,7 @@ import SentimentGauge from "./components/SentimentGauge";
 import Row from "../../_layoutComponents/Row";
 import Column from "../../_layoutComponents/Column";
 import RowColumn from "../../_layoutComponents/RowColumn";
+import { votePerson } from "../../../../services";
 // import { ReactComponent as ThumbsDown } from "../../../../assets/img/thumbs-down.svg";
 // import { ReactComponent as ThumbsUp } from "../../../../assets/img/thumbs-up.svg";
 
@@ -71,6 +72,14 @@ Card.defaultProps = {
 export default function Card(props) {
   const mediaPath = import.meta.env.VITE_MEDIA_PATH;
 
+  const handleVote = async (type) => {
+    const response = await votePerson({
+      id: props.data.id,
+      vote: type === "up",
+    });
+    if (response.success) props.reload();
+  };
+
   return (
     <Container type={props.type} picture={`${mediaPath}${props.data.picture}`}>
       <Row styleProps={{ gap: "8px", justifyContent: "space-between" }}>
@@ -115,11 +124,15 @@ export default function Card(props) {
                 gap: "8px",
               }}
             >
-              <ThumbButton type="up">
+              <ThumbButton type="up" onClick={() => handleVote("up")}>
                 <img alt="" src={ThumbsUpIcon} />
               </ThumbButton>
-              <ThumbButton type="down">
-                <img alt="" src={ThumbsDownIcon} />
+              <ThumbButton type="down" onClick={() => handleVote("down")}>
+                <img
+                  alt=""
+                  src={ThumbsDownIcon}
+                  onClick={() => handleVote("down")}
+                />
               </ThumbButton>
               <VoteButton />
             </Row>

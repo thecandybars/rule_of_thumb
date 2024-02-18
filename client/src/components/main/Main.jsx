@@ -1,30 +1,39 @@
-import React, { useEffect, useState } from "react";
 import { getAllPeople } from "../../../services";
-import Card from "./Card/Card";
-import HorizontalCardViewer from "./HorizontalCardViewer/HorizontalCardViewer";
+import IsMobile from "../../common/customHooks/IsMobile";
+import HorizontalCardViewer from "./CardViewers/HorizontalCardViewer";
+import TwoDimensionalCardViewer from "./CardViewers/TwoDimensionalCardViewer";
+import Title from "./components/Title";
+import useFetch from "../../common/customHooks/useFetch";
+import styled from "styled-components";
+import { DESKTOP, TABLET } from "../../common/constants";
+
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
 
 export default function Main() {
-  const [fetchedPeople, setFetchedPeople] = useState(null);
+  const [fetchedPeople, errorPeople, loadingPeople, reloadPeople] = useFetch(
+    () => getAllPeople()
+  );
+  const isMobile = IsMobile();
 
-  console.log("🚀 ~ App ~ fetchedPeople:", fetchedPeople);
-  useEffect(() => {
-    const fetch = async () => {
-      const response = await getAllPeople();
-      setFetchedPeople(response);
-    };
-    fetch();
-  }, []);
+  const renderCardViewer = isMobile ? (
+    <HorizontalCardViewer
+      data={fetchedPeople?.data.length && fetchedPeople.data}
+      reload={reloadPeople}
+    />
+  ) : (
+    <TwoDimensionalCardViewer
+      data={fetchedPeople?.data.length && fetchedPeople.data}
+      reload={reloadPeople}
+    />
+  );
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "column",
-        gap: "16px",
-      }}
-    >
-      {/* <Card data={fetchedPeople.length && fetchedPeople[5]} type="grid" /> */}
-      <HorizontalCardViewer data={fetchedPeople?.length && fetchedPeople} />
-    </div>
+    <MainContainer>
+      <Title />
+      {renderCardViewer}
+    </MainContainer>
   );
 }

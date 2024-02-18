@@ -9,6 +9,7 @@
   --color-light-background: rgba(255, 255, 255, 0.4);
   --color-lighter-background: rgba(255, 255, 255, 0.8);
   --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
   --color-thumb-up: #3cbbb4cc;
   --color-thumb-down: #f9ad1d99;
 }

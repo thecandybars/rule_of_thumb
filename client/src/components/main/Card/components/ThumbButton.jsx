@@ -20,8 +20,9 @@ const StyledButton = styled.button`
 `;
 export default function ThumbButton(props) {
   const buttonImageSrc = props.type === "down" ? ThumbsDownIcon : ThumbsUpIcon;
+
   return (
-    <StyledButton type={props.type} onClick={() => console.log("kjh")}>
+    <StyledButton type={props.type} onClick={props.onClick}>
       <img alt={`Vote ${props.type}`} src={buttonImageSrc} />
     </StyledButton>
   );
