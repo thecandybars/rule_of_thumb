@@ -18,19 +18,25 @@ import RowColumn from "../../_layoutComponents/RowColumn";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: ${(props) => (props.type === "grid" ? "end" : "start")};
+  justify-content: ${(props) =>
+    props.type === "grid" ? "end" : "space-between"};
   min-width: ${(props) => (props.type === "grid" ? "300px" : "100%")};
   min-height: ${(props) => (props.type === "grid" ? "300px" : "150px")};
   max-width: ${(props) => (props.type === "grid" ? "350px" : "100%")};
   max-height: ${(props) => (props.type === "grid" ? "350px" : "170px")};
-  /* width: 100%; */
-  background-image: ${(props) => `url(${props.picture})`};
+  background-image: ${(props) => `url(${props.picture}),`}
+    linear-gradient(
+      to right,
+      var(--color-dark-background),
+      var(--color-darker-background) 50%,
+      var(--color-dark-background)
+    );
+  /* background-blend-mode: overlay; */
   background-repeat: no-repeat;
   background-position: ${(props) =>
     props.type === "grid" ? "center" : "left"};
   background-size: ${(props) =>
-    props.type === "grid" ? "cover" : "250px auto"};
-  background-color: gray;
+    props.type === "grid" ? "cover" : "250px auto,100%"};
 `;
 const Title = styled.h3`
   color: var(--color-white);
@@ -67,55 +73,58 @@ export default function Card(props) {
 
   return (
     <Container type={props.type} picture={`${mediaPath}${props.data.picture}`}>
-      <Row styleProps={{ gap: "8px" }}>
+      <Row styleProps={{ gap: "8px", justifyContent: "space-between" }}>
         <ThumbIcon
           isPositive={props.data.votePositive - props.data.voteNegative > 0}
         />
-        <Column
-          styleProps={{
-            gap: "16px",
-            marginRight: "40px",
-            marginLeft: props.type === "grid" ? "0px" : "250px",
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: props.type === "grid" ? "column" : "row",
+            margin:
+              props.type === "grid" ? "8px 32px 8px 0px" : "8px 8px 8px 250px",
+            // marginRight: props.type === "grid" ? "40px" : "unset",
+            // marginLeft: props.type === "grid" ? "unset" : "250px",
+            gap: 8,
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: props.type === "grid" ? "column" : "row",
-              gap: 8,
+          <Column
+            styleProps={{
+              gap: "16px",
             }}
           >
-            <Column
+            <Title>{props.data.name}</Title>
+            <Description>{props.data.description}</Description>
+          </Column>
+          <Column
+            styleProps={
+              props.type === "grid"
+                ? { gap: "8px" }
+                : { width: "50%", justifyContent: "center", gap: "8px" }
+            }
+          >
+            <Eyebrow>
+              {`${timeAgo(props.data.lastUpdated)} in ${capitalize(
+                props.data.category
+              )}`}
+            </Eyebrow>
+            <Row
               styleProps={{
-                gap: 16,
+                justifyContent: "end",
+                gap: "8px",
               }}
             >
-              <Title>{props.data.name}</Title>
-              <Description>{props.data.description}</Description>
-            </Column>
-            <Column>
-              <Eyebrow>
-                {`${timeAgo(props.data.lastUpdated)} in ${capitalize(
-                  props.data.category
-                )}`}
-              </Eyebrow>
-              <Row
-                styleProps={{
-                  justifyContent: "end",
-                  gap: 8,
-                }}
-              >
-                <ThumbButton type="up">
-                  <img alt="" src={ThumbsUpIcon} />
-                </ThumbButton>
-                <ThumbButton type="down">
-                  <img alt="" src={ThumbsDownIcon} />
-                </ThumbButton>
-                <VoteButton />
-              </Row>
-            </Column>
-          </div>
-        </Column>
+              <ThumbButton type="up">
+                <img alt="" src={ThumbsUpIcon} />
+              </ThumbButton>
+              <ThumbButton type="down">
+                <img alt="" src={ThumbsDownIcon} />
+              </ThumbButton>
+              <VoteButton />
+            </Row>
+          </Column>
+        </div>
       </Row>
       <SentimentGauge
         votePositive={props.data.votePositive}

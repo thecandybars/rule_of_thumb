@@ -4,6 +4,7 @@ export function capitalize(word) {
 }
 
 export function camelCaseToCSS(camelCaseString) {
+  if (!camelCaseString) return "";
   return camelCaseString.replace(
     /[A-Z]/g,
     (match) => "-" + match.toLowerCase()

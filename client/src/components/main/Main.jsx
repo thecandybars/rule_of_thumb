@@ -14,8 +14,16 @@ export default function Main() {
     fetch();
   }, []);
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      <Card data={fetchedPeople.length && fetchedPeople[5]} />
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+        gap: "16px",
+      }}
+    >
+      <Card data={fetchedPeople.length && fetchedPeople[5]} type="list" />
+      <Card data={fetchedPeople.length && fetchedPeople[5]} type="grid" />
     </div>
   );
 }

@@ -42,8 +42,8 @@ export default function SentimentGauge(props) {
         <p>{widthPositive}%</p>
       </GaugePositive>
       <GaugeNegative width={`${widthNegative}%`}>
-        <img alt={`${widthNegative}%`} src={ThumbsDownIcon} />
         <p>{widthNegative}%</p>
+        <img alt={`${widthNegative}%`} src={ThumbsDownIcon} />
       </GaugeNegative>
     </div>
   );

@@ -5,6 +5,8 @@ import { camelCaseToCSS } from "../../common/strings";
 const StyledRow = styled.div`
   display: flex;
   flex-direction: ${(props) => props.type};
+  border: 1px solid yellow;
+
   width: 100%;
   ${({ styleProps }) =>
     styleProps &&
