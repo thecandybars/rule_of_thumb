@@ -9,115 +9,118 @@ import ThumbButton from "./ThumbButton";
 import VoteButton from "./VoteButton";
 import ThumbIcon from "./ThumbIcon";
 import SentimentGauge from "./SentimentGauge";
+import Row from "../../_layoutComponents/Row";
+import Column from "../../_layoutComponents/Column";
+import RowColumn from "../../_layoutComponents/RowColumn";
 // import { ReactComponent as ThumbsDown } from "../../../../assets/img/thumbs-down.svg";
 // import { ReactComponent as ThumbsUp } from "../../../../assets/img/thumbs-up.svg";
 
 const Container = styled.div`
   display: flex;
-  align-items: end;
-  width: 300px;
-  height: 300px;
+  flex-direction: column;
+  justify-content: ${(props) => (props.type === "grid" ? "end" : "start")};
+  min-width: ${(props) => (props.type === "grid" ? "300px" : "100%")};
+  min-height: ${(props) => (props.type === "grid" ? "300px" : "150px")};
+  max-width: ${(props) => (props.type === "grid" ? "350px" : "100%")};
+  max-height: ${(props) => (props.type === "grid" ? "350px" : "170px")};
+  /* width: 100%; */
   background-image: ${(props) => `url(${props.picture})`};
-  background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: ${(props) =>
+    props.type === "grid" ? "center" : "left"};
+  background-size: ${(props) =>
+    props.type === "grid" ? "cover" : "250px auto"};
+  background-color: gray;
 `;
-const Title = styled.div`
-  display: flex;
-  align-items: flex-end;
+const Title = styled.h3`
   color: var(--color-white);
   padding: 0;
-  gap: 4px;
-  img {
-    background-color: var(--color-darker-background);
-  }
-  h3 {
-    font-size: 30px;
-    line-height: 36px;
-  }
+  font-size: 30px;
+  line-height: 36px;
 `;
 const Description = styled.div`
-  width: 230px;
+  /* width: 230px; */
   height: 36px;
   color: var(--color-white);
   text-overflow: ellipsis;
   overflow: hidden;
-  /* white-space: nowrap; */
-  p {
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 18px;
-  }
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18px;
 `;
-const Eyebrow = styled.div`
+const Eyebrow = styled.p`
   /* width: 279px; */
   /* height: 17px; */
   color: var(--color-white);
   text-align: right;
-  p {
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 14.4px;
-  }
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14.4px;
 `;
+Card.defaultProps = {
+  data: {},
+  type: "grid",
+};
 export default function Card(props) {
   const mediaPath = import.meta.env.VITE_MEDIA_PATH;
 
   return (
-    <Container picture={`${mediaPath}${props.data.picture}`}>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 8,
-        }}
-      >
-        <Title>
-          <ThumbIcon
-            isPositive={props.data.votePositive - props.data.voteNegative > 0}
-          />
-          <h3>{props.data.name}</h3>
-        </Title>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 16,
-            margin: "0 40px",
+    <Container type={props.type} picture={`${mediaPath}${props.data.picture}`}>
+      <Row styleProps={{ gap: "8px" }}>
+        <ThumbIcon
+          isPositive={props.data.votePositive - props.data.voteNegative > 0}
+        />
+        <Column
+          styleProps={{
+            gap: "16px",
+            marginRight: "40px",
+            marginLeft: props.type === "grid" ? "0px" : "250px",
           }}
         >
-          <Description>
-            <p>{props.data.description}</p>
-          </Description>
-          <Eyebrow>
-            <p>
-              {`${timeAgo(props.data.lastUpdated)} in ${capitalize(
-                props.data.category
-              )}`}
-            </p>
-          </Eyebrow>
           <div
             style={{
               display: "flex",
-              justifyContent: "end",
-
+              flexDirection: props.type === "grid" ? "column" : "row",
               gap: 8,
             }}
           >
-            <ThumbButton type="up">
-              <img alt="" src={ThumbsUpIcon} />
-            </ThumbButton>
-            <ThumbButton type="down">
-              <img alt="" src={ThumbsDownIcon} />
-            </ThumbButton>
-            <VoteButton />
+            <Column
+              styleProps={{
+                gap: 16,
+              }}
+            >
+              <Title>{props.data.name}</Title>
+              <Description>{props.data.description}</Description>
+            </Column>
+            <Column>
+              <Eyebrow>
+                {`${timeAgo(props.data.lastUpdated)} in ${capitalize(
+                  props.data.category
+                )}`}
+              </Eyebrow>
+              <Row
+                styleProps={{
+                  justifyContent: "end",
+                  gap: 8,
+                }}
+              >
+                <ThumbButton type="up">
+                  <img alt="" src={ThumbsUpIcon} />
+                </ThumbButton>
+                <ThumbButton type="down">
+                  <img alt="" src={ThumbsDownIcon} />
+                </ThumbButton>
+                <VoteButton />
+              </Row>
+            </Column>
           </div>
-        </div>
-        <SentimentGauge
-          votePositive={props.data.votePositive}
-          voteNegative={props.data.voteNegative}
-        />
-      </div>
+        </Column>
+      </Row>
+      <SentimentGauge
+        votePositive={props.data.votePositive}
+        voteNegative={props.data.voteNegative}
+      />
     </Container>
   );
 }

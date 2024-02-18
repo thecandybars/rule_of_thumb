@@ -36,7 +36,7 @@ export default function SentimentGauge(props) {
   const widthPositive = roundTo((props.votePositive * 100) / votesTotal, 1);
   const widthNegative = roundTo((props.voteNegative * 100) / votesTotal, 1);
   return (
-    <div style={{ display: "flex", width: "300px", height: "36px" }}>
+    <div style={{ display: "flex", width: "100%", height: "36px" }}>
       <GaugePositive width={`${widthPositive}%`}>
         <img alt={`${widthPositive}%`} src={ThumbsUpIcon} />
         <p>{widthPositive}%</p>

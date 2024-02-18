@@ -1,4 +1,5 @@
 require("dotenv").config();
+const People = require("./models/People");
 
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
@@ -35,21 +36,23 @@ let sequelize =
         { logging: false, native: false }
       );
 
-const basename = path.basename(__filename);
-const modelDefiners = [];
+// const basename = path.basename(__filename);
+// const modelDefiners = [];
 
-fs.readdirSync(path.join(__dirname, "/models"))
-  .filter(
-    (file) =>
-      file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
-  )
-  .forEach((file) => {
-    modelDefiners.push(require(path.join(__dirname, "/models", file)));
-  });
+// fs.readdirSync(path.join(__dirname, "/models"))
+//   .filter(
+//     (file) =>
+//       file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
+//   )
+//   .forEach((file) => {
+//     modelDefiners.push(require(path.join(__dirname, "/models", file)));
+//   });
 
-modelDefiners.forEach((model) => {
-  model(sequelize);
-});
+// modelDefiners.forEach((model) => {
+//   model(sequelize);
+// });
+
+People(sequelize);
 
 let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [
