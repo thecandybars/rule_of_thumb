@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { getAllPeople } from "../../../services";
-import Card from "./components/Card";
+import Card from "./Card/Card";
+import HorizontalCardViewer from "./HorizontalCardViewer/HorizontalCardViewer";
 
 export default function Main() {
-  const [fetchedPeople, setFetchedPeople] = useState([]);
+  const [fetchedPeople, setFetchedPeople] = useState(null);
 
   console.log("🚀 ~ App ~ fetchedPeople:", fetchedPeople);
   useEffect(() => {
@@ -22,8 +23,8 @@ export default function Main() {
         gap: "16px",
       }}
     >
-      <Card data={fetchedPeople.length && fetchedPeople[5]} type="list" />
-      <Card data={fetchedPeople.length && fetchedPeople[5]} type="grid" />
+      {/* <Card data={fetchedPeople.length && fetchedPeople[5]} type="grid" /> */}
+      <HorizontalCardViewer data={fetchedPeople?.length && fetchedPeople} />
     </div>
   );
 }

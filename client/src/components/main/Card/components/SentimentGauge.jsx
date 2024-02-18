@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import "../../../../css/main.css";
-import ThumbsDownIcon from "../../../../assets/img/thumbs-down.svg";
-import ThumbsUpIcon from "../../../../assets/img/thumbs-up.svg";
-import { roundTo } from "../../../common/numbers";
+import "../../../../../css/main.css";
+import ThumbsDownIcon from "../../../../../assets/img/thumbs-down.svg";
+import ThumbsUpIcon from "../../../../../assets/img/thumbs-up.svg";
+import { roundTo } from "../../../../common/numbers";
 
 const GaugePositive = styled.div`
   display: flex;
