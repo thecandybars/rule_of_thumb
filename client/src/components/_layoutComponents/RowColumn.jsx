@@ -5,20 +5,20 @@ import { camelCaseToCSS } from "../../common/strings";
 const StyledRow = styled.div`
   display: flex;
   flex-direction: ${(props) => props.type};
-  border: 1px solid yellow;
-
   width: 100%;
-  ${({ styleProps }) =>
-    styleProps &&
+  ${({ style }) =>
+    style &&
     css`
-      ${Object.keys(styleProps)
-        .map((key) => `${camelCaseToCSS(key)}: ${styleProps[key]};`)
+      ${Object.entries(style)
+        .map((entry) => `${camelCaseToCSS(entry[0])}: ${entry[1]};`)
         .join("\n")}
     `}
 `;
 RowColumn.defaultProps = {
   type: "row",
 };
+
+// Use the style prop on component to add custom inline styling
 export default function RowColumn({ children, ...props }) {
   return <StyledRow {...props}>{children}</StyledRow>;
 }

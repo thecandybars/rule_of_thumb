@@ -45,7 +45,7 @@ export default function CardActions(props) {
   };
   return (
     <Column
-      styleProps={
+      style={
         props.type === "grid"
           ? { gap: "8px" }
           : {
@@ -63,7 +63,7 @@ export default function CardActions(props) {
             )}`}
       </Eyebrow>
       <Row
-        styleProps={{
+        style={{
           justifyContent: "end",
           gap: "8px",
           height: "38px",
@@ -90,7 +90,7 @@ export default function CardActions(props) {
         <VoteButton
           onClick={submitVote}
           voteSubmitted={voteSubmitted}
-          disabled={thumbButtonSelected === null}
+          thumbButtonSelected={thumbButtonSelected}
         />
       </Row>
     </Column>

@@ -4,15 +4,17 @@ import ThumbsUpIcon from "../../../../../assets/img/thumbs-up.svg";
 import styled from "styled-components";
 import "../../../../../css/main.css";
 
-const StyledButton = styled.button`
+const StyledButton = styled(({ isSelected, ...props }) => (
+  <button {...props} />
+))`
   border: ${(props) =>
     props.isSelected
       ? "2px solid var(--color-white)"
       : "2px solid transparent"};
   background-color: ${(props) =>
     props.type === "down"
-      ? "var(--color-thumb-down)"
-      : "var(--color-thumb-up)"};
+      ? "var(--color-thumb-down-solid)"
+      : "var(--color-thumb-up-solid)"};
   cursor: pointer;
   padding: 8px;
   img {

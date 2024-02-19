@@ -1,19 +1,17 @@
-import "./App.css";
 import Nav from "./components/nav/Nav";
-import Header from "./components/header/Header";
-import AsideTop from "./components/asides/AsideTop";
-import AsideBottom from "./components/asides/AsideBottom";
-import Footer from "./components/footer/Footer";
-import Main from "./components/main/Main";
+import Header from "./components/header";
+import { AsideTop, AsideBottom } from "./components/asides/";
+import Footer from "./components/footer";
+import Voting from "./components/Voting";
 
 function App() {
   return (
     <div>
       <Nav />
       <Header />
-      <div class="max-centered">
+      <div className="max-centered">
         <AsideTop />
-        <Main />
+        <Voting />
         <AsideBottom />
         <Footer />
       </div>

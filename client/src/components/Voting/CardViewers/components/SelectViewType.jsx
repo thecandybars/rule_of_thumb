@@ -5,6 +5,7 @@ import { capitalize } from "../../../../common/strings";
 
 const Container = styled.div`
   position: absolute;
+  top: 120px;
   left: calc(100% - 175px);
   display: flex;
   flex-direction: column;

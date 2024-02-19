@@ -4,15 +4,9 @@ import HorizontalCardViewer from "./CardViewers/HorizontalCardViewer";
 import TwoDimensionalCardViewer from "./CardViewers/TwoDimensionalCardViewer";
 import Title from "./components/Title";
 import useFetch from "../../common/customHooks/useFetch";
-import styled from "styled-components";
+import Column from "../_layoutComponents/Column";
 
-const MainContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-`;
-
-export default function Main() {
+export default function Voting() {
   const [fetchedPeople, reloadPeople, loadingPeople, errorPeople] = useFetch(
     () => getAllPeople()
   );
@@ -30,9 +24,9 @@ export default function Main() {
     />
   );
   return (
-    <MainContainer>
+    <Column style={{ gap: "16px" }}>
       <Title />
       {renderCardViewer}
-    </MainContainer>
+    </Column>
   );
 }

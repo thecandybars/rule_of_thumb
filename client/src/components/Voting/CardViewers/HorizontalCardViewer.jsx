@@ -10,7 +10,7 @@ const StyledHorizontalCardViewer = styled.div`
 `;
 export default function HorizontalCardViewer(props) {
   const renderCards = props.data?.map((person) => (
-    <div style={{ margin: "0 8px" }}>
+    <div style={{ margin: "0 8px" }} key={person.id}>
       <Card data={person} type="grid" reload={props.reload} />
     </div>
   ));

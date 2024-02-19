@@ -5,16 +5,17 @@ import { camelCaseToCSS } from "../../common/strings";
 const StyledRow = styled.div`
   display: flex;
   flex-direction: row;
-  /* border: 1px solid red; */
   width: 100%;
-  ${({ styleProps }) =>
-    styleProps &&
+  ${({ style }) =>
+    style &&
     css`
-      ${Object.keys(styleProps)
-        .map((key) => `${camelCaseToCSS(key)}: ${styleProps[key]};`)
+      ${Object.entries(style)
+        .map((entry) => `${camelCaseToCSS(entry[0])}: ${entry[1]};`)
         .join("\n")}
     `}
 `;
+// Use the style prop on component to add custom inline styling
+
 export default function Row({ children, ...props }) {
   return <StyledRow {...props}>{children}</StyledRow>;
 }
