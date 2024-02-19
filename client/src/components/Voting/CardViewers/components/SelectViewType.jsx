@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import "src/css/main.css";
 import { capitalize } from "src/common/strings";
@@ -39,8 +39,14 @@ export default function SelectViewType({ onChange, value }) {
   const handleMainButton = () => setDisplaySelect((prev) => !displaySelect);
   const handleSelect = (sel) => {
     onChange(sel);
+    localStorage.setItem("displaySelect", sel);
     setDisplaySelect(false);
   };
+  useEffect(() => {
+    const storedDisplaySelect = localStorage.getItem("displaySelect");
+    if (storedDisplaySelect) handleSelect(storedDisplaySelect);
+  }, []);
+
   return (
     <Container>
       <StyledButton onClick={handleMainButton}>
