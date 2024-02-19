@@ -4,7 +4,7 @@ import { camelCaseToCSS } from "src/common/strings";
 const StyledRow = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  /* width: 100%; */
   ${({ style }) =>
     style &&
     css`

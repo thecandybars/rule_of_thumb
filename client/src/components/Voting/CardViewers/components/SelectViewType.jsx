@@ -36,7 +36,7 @@ const StyledButtonArrow = styled.span`
 
 export default function SelectViewType({ onChange, value }) {
   const [displaySelect, setDisplaySelect] = useState(false);
-  const handleMainButton = () => setDisplaySelect((prev) => !displaySelect);
+  const handleMainButton = () => setDisplaySelect((prev) => !prev);
   const handleSelect = (sel) => {
     onChange(sel);
     localStorage.setItem("displaySelect", sel);

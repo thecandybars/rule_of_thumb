@@ -7,7 +7,7 @@ import styled from "styled-components";
 import "src/css/main.css";
 import { timeAgo } from "src/common/dates";
 import { capitalize } from "src/common/strings";
-import { votePerson } from "src/services";
+import { votePerson } from "../../../../services";
 import ThumbsDownIcon from "../../../../../assets/img/thumbs-down.svg";
 import ThumbsUpIcon from "../../../../../assets/img/thumbs-up.svg";
 
@@ -47,11 +47,11 @@ export default function CardActions({ type, data, reload }) {
     <Column
       style={
         type === "grid"
-          ? { gap: "8px" }
+          ? { gap: "16px", justifySelf: "end" }
           : {
-              width: "50%",
-              justifyContent: "center",
-              gap: "8px",
+              minWidth: "230px",
+              marginTop: "8px",
+              gap: "16px",
             }
       }
     >
