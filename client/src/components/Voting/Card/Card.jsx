@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import "src/css/main.css";
 import ThumbIcon from "./components/ThumbIcon";
 import SentimentGauge from "./components/SentimentGauge";
 import Row from "src/common/LayoutComponents/Row";
 import Column from "src/common/LayoutComponents/Column";
 import CardActions from "./components/CardActions";
 import { mediaPath } from "src/config.js";
+import "../../../css/main.css";
 
 const Container = styled(({ type, picture, ...props }) => <div {...props} />)`
   display: flex;
