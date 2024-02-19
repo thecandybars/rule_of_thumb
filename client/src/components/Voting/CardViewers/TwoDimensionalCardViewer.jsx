@@ -28,7 +28,7 @@ export default function TwoDimensionalCardViewer({ data, reload }) {
   ));
 
   return (
-    <Column>
+    <Column style={{ position: "relative" }}>
       <SelectViewType
         value={viewerType}
         onChange={(type) => setViewerType(type)}

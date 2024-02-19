@@ -5,8 +5,8 @@ import { capitalize } from "src/common/strings";
 
 const Container = styled.div`
   position: absolute;
-  top: 120px;
-  left: calc(100% - 175px);
+  top: -3rem;
+  left: calc(100% - 175px - 16px);
   display: flex;
   flex-direction: column;
   width: 175px;
