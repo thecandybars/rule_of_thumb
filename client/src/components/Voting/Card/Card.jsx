@@ -13,20 +13,19 @@ const Container = styled(({ type, picture, ...props }) => <div {...props} />)`
   justify-content: ${(props) =>
     props.type === "grid" ? "end" : "space-between"};
   aspect-ratio: 1;
-  background-image: ${(props) => `url(${props.picture}),`}
-    linear-gradient(
+  background-image: linear-gradient(
       to right,
-      rgba(100, 100, 100, 0),
-      var(--color-dark-background) 350px,
-      var(--color-darker-background) 50%,
-      var(--color-dark-background)
-    );
-  background-blend-mode: overlay;
+      #00000000 100px,
+      #888888 240px,
+      #666666 50%,
+      #888888
+    ),
+    ${(props) => `url(${props.picture})`};
   background-repeat: no-repeat;
   background-position: ${(props) =>
     props.type === "grid" ? "center" : "left"};
   background-size: ${(props) =>
-    props.type === "grid" ? "cover" : "250px auto,100%"};
+    props.type === "grid" ? "cover" : "100%,250px auto"};
   width: 350px;
   height: 350px;
 
