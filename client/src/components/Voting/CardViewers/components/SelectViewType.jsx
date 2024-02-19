@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
-import "../../../../../css/main.css";
-import { capitalize } from "../../../../common/strings";
+import "src/css/main.css";
+import { capitalize } from "src/common/strings";
 
 const Container = styled.div`
   position: absolute;

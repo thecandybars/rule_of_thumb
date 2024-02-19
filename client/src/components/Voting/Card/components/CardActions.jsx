@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import Column from "../../../_layoutComponents/Column";
-import Row from "../../../_layoutComponents/Row";
+import { useState } from "react";
+import Column from "src/common/LayoutComponents/Column";
+import Row from "src/common/LayoutComponents/Row";
 import ThumbButton from "./ThumbButton";
 import VoteButton from "./VoteButton";
 import styled from "styled-components";
-import "../../../../../css/main.css";
-import { timeAgo } from "../../../../common/dates";
-import { capitalize } from "../../../../common/strings";
-import { votePerson } from "../../../../../services";
+import "src/css/main.css";
+import { timeAgo } from "src/common/dates";
+import { capitalize } from "src/common/strings";
+import { votePerson } from "src/services";
 import ThumbsDownIcon from "../../../../../assets/img/thumbs-down.svg";
 import ThumbsUpIcon from "../../../../../assets/img/thumbs-up.svg";
 

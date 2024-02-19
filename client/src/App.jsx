@@ -1,8 +1,8 @@
-import Nav from "./components/nav/Nav";
-import Header from "./components/header";
-import { AsideTop, AsideBottom } from "./components/asides/";
-import Footer from "./components/footer";
-import Voting from "./components/Voting";
+import Nav from "src/components/Nav/";
+import Header from "src/components/Header";
+import { AsideTop, AsideBottom } from "./components/Asides/";
+import Footer from "src/components/Footer";
+import Voting from "src/components/Voting";
 
 function App() {
   return (

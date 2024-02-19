@@ -1,14 +1,11 @@
-import React from "react";
 import styled from "styled-components";
-// import "root/css/main.css";
-import "../../../../css/main.css";
+import "src/css/main.css";
 import ThumbIcon from "./components/ThumbIcon";
 import SentimentGauge from "./components/SentimentGauge";
-import Row from "../../_layoutComponents/Row";
-import Column from "../../_layoutComponents/Column";
+import Row from "src/common/LayoutComponents/Row";
+import Column from "src/common/LayoutComponents/Column";
 import CardActions from "./components/CardActions";
 import { mediaPath } from "src/config.js";
-// import { mediaPath } from "../../../../config";
 
 const Container = styled(({ type, picture, ...props }) => <div {...props} />)`
   display: flex;

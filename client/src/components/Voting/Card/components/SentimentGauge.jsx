@@ -1,10 +1,9 @@
-import React from "react";
 import styled from "styled-components";
-import "../../../../../css/main.css";
+import "src/css/main.css";
 import ThumbsDownIcon from "../../../../../assets/img/thumbs-down.svg";
 import ThumbsUpIcon from "../../../../../assets/img/thumbs-up.svg";
-import { roundTo } from "../../../../common/numbers";
-import Row from "../../../_layoutComponents/Row";
+import { roundTo } from "src/common/numbers";
+import Row from "src/common/LayoutComponents/Row";
 
 const Gauge = styled.div`
   display: flex;

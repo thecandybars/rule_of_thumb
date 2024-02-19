@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function AsideTop() {
   return (
     <aside className="banner banner-top" role="doc-tip" aria-label="Speak Out">

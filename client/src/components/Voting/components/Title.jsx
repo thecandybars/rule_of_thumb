@@ -1,6 +1,5 @@
-import React from "react";
 import styled from "styled-components";
-import "../../../../css/main.css";
+import "src/css/main.css";
 
 const StyledTitle = styled.h3`
   color: var(--color-dark-gray);

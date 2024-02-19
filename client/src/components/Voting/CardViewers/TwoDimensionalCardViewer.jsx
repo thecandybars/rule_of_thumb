@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Card from "../Card/Card";
 import SelectViewType from "./components/SelectViewType";
-import Column from "../../_layoutComponents/Column";
+import Column from "src/common/LayoutComponents/Column";
 
 TwoDimensionalCardViewer.defaultProps = {
   type: "grid",

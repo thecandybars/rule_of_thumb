@@ -1,8 +1,7 @@
-import React from "react";
 import ThumbsDownIcon from "../../../../../assets/img/thumbs-down.svg";
 import ThumbsUpIcon from "../../../../../assets/img/thumbs-up.svg";
 import styled from "styled-components";
-import "../../../../../css/main.css";
+import "src/css/main.css";
 
 const StyledDiv = styled(({ isPositive, ...props }) => <div {...props} />)`
   display: flex;

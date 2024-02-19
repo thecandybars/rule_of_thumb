@@ -1,10 +1,9 @@
-import React from "react";
 import styled, { css } from "styled-components";
-import { camelCaseToCSS } from "../../common/strings";
+import { camelCaseToCSS } from "src/common/strings";
 
 const StyledRow = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
   ${({ style }) =>
     style &&
@@ -15,7 +14,6 @@ const StyledRow = styled.div`
     `}
 `;
 // Use the style prop on component to add custom inline styling
-
-export default function Row({ children, ...props }) {
+export default function Column({ children, ...props }) {
   return <StyledRow {...props}>{children}</StyledRow>;
 }
