@@ -4,8 +4,8 @@ import "../../../../../css/main.css";
 import { capitalize } from "../../../../common/strings";
 
 const Container = styled.div`
-  position: relative;
-  top: -3rem;
+  position: absolute;
+  left: calc(100% - 175px);
   display: flex;
   flex-direction: column;
   width: 175px;

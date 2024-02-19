@@ -11,7 +11,7 @@ const StyledButton = styled.button`
 `;
 
 export default function VoteButton(props) {
-  const buttonLabel = props.voteSubmitted ? "Vote again" : "Vote Now";
+  const buttonLabel = props.voteSubmitted ? "Vote Again" : "Vote Now";
   return (
     <StyledButton disabled={props.disabled} onClick={props.onClick}>
       {buttonLabel}

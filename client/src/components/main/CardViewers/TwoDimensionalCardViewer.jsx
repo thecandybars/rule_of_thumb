@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Card from "../Card/Card";
 import SelectViewType from "./components/SelectViewType";
+import Column from "../../_layoutComponents/Column";
 
 TwoDimensionalCardViewer.defaultProps = {
   type: "list",
@@ -19,18 +20,15 @@ export default function TwoDimensionalCardViewer(props) {
   const listStyle = {
     display: "flex",
     flexDirection: "column",
-    // justifyContent: "center",
-    // alignItems: "center",
-    // flexWrap: "wrap",
     width: "100%",
-    gap: "8px",
+    gap: "16px",
   };
   const renderCards = props.data?.map((person) => (
     <Card data={person} type={viewerType} reload={props.reload} />
   ));
 
   return (
-    <div style={{ width: "100%" }}>
+    <Column>
       <SelectViewType
         value={viewerType}
         onChange={(type) => setViewerType(type)}
@@ -38,6 +36,6 @@ export default function TwoDimensionalCardViewer(props) {
       <div style={viewerType === "grid" ? { ...gridStyle } : { ...listStyle }}>
         {renderCards}
       </div>
-    </div>
+    </Column>
   );
 }
