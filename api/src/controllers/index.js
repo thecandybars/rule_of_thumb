@@ -8,7 +8,6 @@ async function getAllPeople() {
 async function votePerson(data) {
   const { body } = data;
   const person = await People.findByPk(body.id);
-  console.log("🚀 ~ votePerson ~ person:", person);
   let peopleEdited = {};
   if (person) {
     const resp = body.vote

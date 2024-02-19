@@ -29,7 +29,6 @@ export default function TwoDimensionalCardViewer(props) {
     <Card data={person} type={viewerType} reload={props.reload} />
   ));
 
-  console.log("🚀 ~ TwoDimensionalCardViewer ~ viewerType:", viewerType);
   return (
     <div style={{ width: "100%" }}>
       <SelectViewType

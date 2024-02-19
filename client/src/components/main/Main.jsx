@@ -5,7 +5,6 @@ import TwoDimensionalCardViewer from "./CardViewers/TwoDimensionalCardViewer";
 import Title from "./components/Title";
 import useFetch from "../../common/customHooks/useFetch";
 import styled from "styled-components";
-import { DESKTOP, TABLET } from "../../common/constants";
 
 const MainContainer = styled.div`
   display: flex;
@@ -14,7 +13,7 @@ const MainContainer = styled.div`
 `;
 
 export default function Main() {
-  const [fetchedPeople, errorPeople, loadingPeople, reloadPeople] = useFetch(
+  const [fetchedPeople, reloadPeople, loadingPeople, errorPeople] = useFetch(
     () => getAllPeople()
   );
   const isMobile = IsMobile();

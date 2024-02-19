@@ -26,5 +26,5 @@ export default function useFetch(service) {
 
   const reload = () => setLoad(true);
 
-  return [data, error, isLoading, reload];
+  return [data, reload, isLoading, error];
 }

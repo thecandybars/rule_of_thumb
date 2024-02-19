@@ -13,7 +13,6 @@ export async function getAllPeople() {
 export async function votePerson(body) {
   try {
     const { data } = await axios.put(`/`, body);
-    console.log("🚀 ~ votePerson ~ data:", data);
     return data;
   } catch (error) {
     return error;

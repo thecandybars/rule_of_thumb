@@ -13,6 +13,7 @@ import Row from "../../_layoutComponents/Row";
 import Column from "../../_layoutComponents/Column";
 import RowColumn from "../../_layoutComponents/RowColumn";
 import { votePerson } from "../../../../services";
+import CardActions from "./components/CardActions";
 // import { ReactComponent as ThumbsDown } from "../../../../assets/img/thumbs-down.svg";
 // import { ReactComponent as ThumbsUp } from "../../../../assets/img/thumbs-up.svg";
 
@@ -93,8 +94,6 @@ export default function Card(props) {
             flexDirection: props.type === "grid" ? "column" : "row",
             margin:
               props.type === "grid" ? "8px 32px 8px 0px" : "8px 8px 8px 250px",
-            // marginRight: props.type === "grid" ? "40px" : "unset",
-            // marginLeft: props.type === "grid" ? "unset" : "250px",
             gap: 8,
           }}
         >
@@ -106,7 +105,12 @@ export default function Card(props) {
             <Title>{props.data.name}</Title>
             <Description>{props.data.description}</Description>
           </Column>
-          <Column
+          <CardActions
+            data={props.data}
+            type={props.type}
+            reload={props.reload}
+          />
+          {/* <Column
             styleProps={
               props.type === "grid"
                 ? { gap: "8px" }
@@ -136,7 +140,7 @@ export default function Card(props) {
               </ThumbButton>
               <VoteButton />
             </Row>
-          </Column>
+          </Column> */}
         </div>
       </Row>
       <SentimentGauge

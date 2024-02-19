@@ -10,6 +10,11 @@ const StyledButton = styled.button`
   padding: 8px 24px;
 `;
 
-export default function VoteButton() {
-  return <StyledButton>Vote Now</StyledButton>;
+export default function VoteButton(props) {
+  const buttonLabel = props.voteSubmitted ? "Vote again" : "Vote Now";
+  return (
+    <StyledButton disabled={props.disabled} onClick={props.onClick}>
+      {buttonLabel}
+    </StyledButton>
+  );
 }
