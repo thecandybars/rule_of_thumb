@@ -34,17 +34,17 @@ const StyledButtonArrow = styled.span`
   flex-grow: 0;
 `;
 
-export default function SelectViewType(props) {
+export default function SelectViewType({ onChange, value }) {
   const [displaySelect, setDisplaySelect] = useState(false);
   const handleMainButton = () => setDisplaySelect((prev) => !displaySelect);
   const handleSelect = (sel) => {
-    props.onChange(sel);
+    onChange(sel);
     setDisplaySelect(false);
   };
   return (
     <Container>
       <StyledButton onClick={handleMainButton}>
-        <StyledButtonTitle> {capitalize(props.value)}</StyledButtonTitle>
+        <StyledButtonTitle> {capitalize(value)}</StyledButtonTitle>
         <StyledButtonArrow> &#9662;</StyledButtonArrow>
       </StyledButton>
       {displaySelect && (

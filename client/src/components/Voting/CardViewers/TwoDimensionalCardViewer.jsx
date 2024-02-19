@@ -6,7 +6,7 @@ import Column from "../../_layoutComponents/Column";
 TwoDimensionalCardViewer.defaultProps = {
   type: "grid",
 };
-export default function TwoDimensionalCardViewer(props) {
+export default function TwoDimensionalCardViewer({ data, reload }) {
   const [viewerType, setViewerType] = useState("grid");
 
   const gridStyle = {
@@ -23,13 +23,8 @@ export default function TwoDimensionalCardViewer(props) {
     width: "100%",
     gap: "16px",
   };
-  const renderCards = props.data?.map((person) => (
-    <Card
-      key={person.id}
-      data={person}
-      type={viewerType}
-      reload={props.reload}
-    />
+  const renderCards = data?.map((person) => (
+    <Card key={person.id} data={person} type={viewerType} reload={reload} />
   ));
 
   return (

@@ -84,32 +84,26 @@ Card.defaultProps = {
   data: {},
   type: "grid",
 };
-export default function Card(props) {
+export default function Card({ type, data, reload }) {
   return (
-    <Container type={props.type} picture={`${mediaPath}${props.data.picture}`}>
+    <Container type={type} picture={`${mediaPath}${data.picture}`}>
       <Row style={{ gap: "8px", justifyContent: "space-between" }}>
-        <ThumbIcon
-          isPositive={props.data.votePositive - props.data.voteNegative > 0}
-        />
-        <RowColumn type={props.type}>
+        <ThumbIcon isPositive={data.votePositive - data.voteNegative > 0} />
+        <RowColumn type={type}>
           <Column
             style={{
               gap: "16px",
             }}
           >
-            <Title>{props.data.name}</Title>
-            <Description>{props.data.description}</Description>
+            <Title>{data.name}</Title>
+            <Description>{data.description}</Description>
           </Column>
-          <CardActions
-            data={props.data}
-            type={props.type}
-            reload={props.reload}
-          />
+          <CardActions data={data} type={type} reload={reload} />
         </RowColumn>
       </Row>
       <SentimentGauge
-        votePositive={props.data.votePositive}
-        voteNegative={props.data.voteNegative}
+        votePositive={data.votePositive}
+        voteNegative={data.voteNegative}
       />
     </Container>
   );

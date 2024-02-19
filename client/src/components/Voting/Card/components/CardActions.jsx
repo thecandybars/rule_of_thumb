@@ -22,7 +22,7 @@ const Eyebrow = styled.p`
   line-height: 14.4px;
 `;
 
-export default function CardActions(props) {
+export default function CardActions({ type, data, reload }) {
   const [thumbButtonSelected, setThumbButtonSelected] = useState(null);
   const [voteSubmitted, setVoteSubmitted] = useState(false);
   const handleVote = (voteType) => {
@@ -31,11 +31,11 @@ export default function CardActions(props) {
   const submitVote = async () => {
     if (thumbButtonSelected && !voteSubmitted) {
       const response = await votePerson({
-        id: props.data.id,
+        id: data.id,
         vote: thumbButtonSelected === "up",
       });
       if (response.success) {
-        props.reload();
+        reload();
         setVoteSubmitted(true);
       }
     } else {
@@ -46,7 +46,7 @@ export default function CardActions(props) {
   return (
     <Column
       style={
-        props.type === "grid"
+        type === "grid"
           ? { gap: "8px" }
           : {
               width: "50%",
@@ -58,9 +58,7 @@ export default function CardActions(props) {
       <Eyebrow>
         {voteSubmitted
           ? "Thank you for your vote!"
-          : `${timeAgo(props.data.lastUpdated)} in ${capitalize(
-              props.data.category
-            )}`}
+          : `${timeAgo(data.lastUpdated)} in ${capitalize(data.category)}`}
       </Eyebrow>
       <Row
         style={{

@@ -22,16 +22,12 @@ const StyledButton = styled(({ isSelected, ...props }) => (
     height: 16px;
   }
 `;
-export default function ThumbButton(props) {
-  const buttonImageSrc = props.type === "down" ? ThumbsDownIcon : ThumbsUpIcon;
+export default function ThumbButton({ type, onClick, isSelected }) {
+  const buttonImageSrc = type === "down" ? ThumbsDownIcon : ThumbsUpIcon;
 
   return (
-    <StyledButton
-      type={props.type}
-      onClick={props.onClick}
-      isSelected={props.isSelected}
-    >
-      <img alt={`Vote ${props.type}`} src={buttonImageSrc} />
+    <StyledButton type={type} onClick={onClick} isSelected={isSelected}>
+      <img alt={`Vote ${type}`} src={buttonImageSrc} />
     </StyledButton>
   );
 }
