@@ -12,8 +12,14 @@ const StyledButton = styled(({ isSelected, ...props }) => (
       : "2px solid transparent"};
   background-color: ${(props) =>
     props.type === "down"
-      ? "var(--color-thumb-down-solid)"
-      : "var(--color-thumb-up-solid)"};
+      ? "rgba(var(--color-yellow-negative), 0.8)"
+      : "rgba(var(--color-green-positive), 0.8)"};
+  &:hover {
+    background-color: ${(props) =>
+      props.type === "down"
+        ? "rgba(var(--color-yellow-negative), 1)"
+        : "rgba(var(--color-green-positive), 1)"};
+  }
   cursor: pointer;
   padding: 8px;
   img {
