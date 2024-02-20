@@ -1,6 +1,4 @@
 import { useState } from "react";
-import Column from "src/common/LayoutComponents/Column";
-import Row from "src/common/LayoutComponents/Row";
 import ThumbButton from "./ThumbButton";
 import VoteButton from "./VoteButton";
 import styled from "styled-components";
@@ -11,6 +9,14 @@ import { votePerson } from "../../../../services";
 import ThumbsDownIcon from "../../../../../assets/img/thumbs-down.svg";
 import ThumbsUpIcon from "../../../../../assets/img/thumbs-up.svg";
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-self: ${(props) => (props.type === "grid" ? "end" : "unset")};
+  min-width: ${(props) => (props.type === "grid" ? "unset" : "230px")};
+  margin-top: ${(props) => (props.type === "grid" ? "end" : "8px")};
+`;
 const Eyebrow = styled.p`
   /* width: 279px; */
   /* height: 17px; */
@@ -20,6 +26,12 @@ const Eyebrow = styled.p`
   font-size: 12px;
   font-weight: 700;
   line-height: 14.4px;
+`;
+const ButtonGroup = styled.div`
+  display: flex;
+  justify-content: end;
+  gap: 8px;
+  height: 38px;
 `;
 
 export default function CardActions({ type, data, reload }) {
@@ -44,29 +56,13 @@ export default function CardActions({ type, data, reload }) {
     }
   };
   return (
-    <Column
-      style={
-        type === "grid"
-          ? { gap: "16px", justifySelf: "end" }
-          : {
-              minWidth: "230px",
-              marginTop: "8px",
-              gap: "16px",
-            }
-      }
-    >
+    <Container type={type}>
       <Eyebrow>
         {voteSubmitted
           ? "Thank you for your vote!"
           : `${timeAgo(data.lastUpdated)} in ${capitalize(data.category)}`}
       </Eyebrow>
-      <Row
-        style={{
-          justifyContent: "end",
-          gap: "8px",
-          height: "38px",
-        }}
-      >
+      <ButtonGroup>
         {!voteSubmitted && (
           <ThumbButton
             type="up"
@@ -90,7 +86,7 @@ export default function CardActions({ type, data, reload }) {
           voteSubmitted={voteSubmitted}
           thumbButtonSelected={thumbButtonSelected}
         />
-      </Row>
-    </Column>
+      </ButtonGroup>
+    </Container>
   );
 }

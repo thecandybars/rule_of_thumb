@@ -3,8 +3,11 @@ import "src/css/main.css";
 import ThumbsDownIcon from "../../../../../assets/img/thumbs-down.svg";
 import ThumbsUpIcon from "../../../../../assets/img/thumbs-up.svg";
 import { roundTo } from "src/common/numbers";
-import Row from "src/common/LayoutComponents/Row";
 
+const GaugeContainer = styled.div`
+  display: flex;
+  height: 36px;
+`;
 const Gauge = styled.div`
   display: flex;
   justify-content: ${(props) => (props.type === "positive" ? "start" : "end")};
@@ -28,7 +31,7 @@ export default function SentimentGauge({ voteNegative, votePositive }) {
   const widthNegative = roundTo((voteNegative * 100) / votesTotal, 1);
 
   return (
-    <Row style={{ height: "36px" }}>
+    <GaugeContainer>
       <Gauge type="positive" width={`${widthPositive}%`}>
         <img alt={`${widthPositive}%`} src={ThumbsUpIcon} />
         <p>{widthPositive}%</p>
@@ -37,6 +40,6 @@ export default function SentimentGauge({ voteNegative, votePositive }) {
         <p>{widthNegative}%</p>
         <img alt={`${widthNegative}%`} src={ThumbsDownIcon} />
       </Gauge>
-    </Row>
+    </GaugeContainer>
   );
 }

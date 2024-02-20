@@ -15,6 +15,9 @@
   --color-thumb-up-solid: #3cbbb4;
   --color-thumb-down-solid: #f9ad1d;
   --color-vote-active: #30303094;
+  --color-gradient-light-gray: #888888;
+  --color-gradient-dark-gray: #666666;
+  --color-black-transparent: #00000000;
 }
 
 html,
