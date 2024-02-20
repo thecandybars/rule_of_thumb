@@ -6,18 +6,13 @@ require("dotenv").config();
 
 const port = process.env.PORT;
 
-const force = false;
+const force = true;
 const alter = true;
 conn.sync({ force, alter }).then(() => {
   server.listen(port, async () => {
     console.log(`Listening at ${port}`);
     console.log(`Creating bulk data`);
     if (force) {
-      destroyOptions = {
-        where: {},
-        truncate: false,
-      };
-      // await People.destroy(destroyOptions);
       await People.bulkCreate(
         [
           {

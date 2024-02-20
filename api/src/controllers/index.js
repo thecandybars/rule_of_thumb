@@ -1,4 +1,3 @@
-const axios = require("axios");
 const { People } = require("../db.js");
 
 async function getAllPeople() {
